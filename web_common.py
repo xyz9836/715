@@ -144,7 +144,7 @@ def dashboard_data():
         today_data['w_award_income'] = today_data.get('award_income')
     elif user_info.get('is_show_wpdc') == 2:
         today_data['w_award_income'] = today_data.get('m_award_income')
-    return Response(json.dumps(dict(today_data=today_data)), mimetype='application/json')
+    return Response(json.dumps(dict(today_data=today_data, device_summary=miner_summary(username))), mimetype='application/json')
 
 
 # 刷新控制面板图表速度数据

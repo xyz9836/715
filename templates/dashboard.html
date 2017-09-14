@@ -170,8 +170,9 @@
                 </div>
                 <div class="ibox-content" style="height: 88px;">
                     <div class="row">
-                        <div class="col-xs-12 text-right" style="padding-left: 5px;" id="expected_font">
+                        <div class="col-xs-12 text-right" style="padding-left: 5px;">
                             <h1 style="font-weight: bold;" class="no-margins" id="balance"></h1>
+                              <small style=" font-weight: bold;"><span id="shouru_unit"></span></small>
                         </div>
                     </div>
                 </div>
@@ -186,8 +187,9 @@
                 </div>
                 <div class="ibox-content" style="height: 88px;">
                     <div class="row">
-                        <div class="col-xs-12 text-right" style="padding-left: 5px;" id="expected_font">
+                        <div class="col-xs-12 text-right" style="padding-left: 5px;">
                             <h1 style="font-weight: bold;" class="no-margins" id="income"></h1>
+                            <small style=" font-weight: bold;"><span id="shouru_unit"></span></small>
                         </div>
                     </div>
                 </div>
@@ -779,10 +781,14 @@
                 }
                 if($('#balance').html() !== convert_to_yuan(data.today_data.balance)) {
                     $('#balance').html(convert_to_yuan(data.today_data.balance));
+                    $('#shouru_unit').html('元');
                     flash_element($('#balance'));
+
+
                 }
                 if($('#income').html() !== convert_to_yuan(data.today_data.income)) {
                     $('#income').html(convert_to_yuan(data.today_data.income));
+                    $('#shouru_unit').html('元');
                     flash_element($('#income'));
                 }
                 if(parseInt($('#pause_miner').html()) !== data.device_summary.pause_count) {
