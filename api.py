@@ -10,7 +10,8 @@ requests.packages.urllib3.disable_warnings()
 # 迅雷API接口
 appversion = '3.1.1'
 server_address = 'http://2-api-red.xunlei.com'
-agent_header = {'user-agent': "RedCrystal/3.0.0 (iPhone; iOS 9.9; Scale/2.00)"}
+#agent_header = {'user-agent': "RedCrystal/3.0.0 (iPhone; iOS 9.9; Scale/2.00)"}
+agent_header = {'User-Agent': "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_7_0) AppleWebKit/535.11 (KHTML, like Gecko) Chrome/17.0.963.56 Safari/535.11"}
 
 # 负载均衡
 
@@ -34,6 +35,10 @@ def api_post(cookies, url, data, verify=False, headers=agent_header, timeout=60)
         return __handle_exception(rd=r.reason)
 
     return json.loads(r.text)
+
+
+
+
 
 # 申请提现请求
 
