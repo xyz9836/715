@@ -27,7 +27,7 @@
 {% endblock %}
 {% block content %}
 
-    <div class="row">    
+    <div class="row">
         <div class="col-lg-3 col-md-4 col-xs-6">
             <div class="ibox float-e-margins">
                 <div class="ibox-title">
@@ -64,6 +64,63 @@
                             <small style=" font-weight: bold;"><span id="speed2_unit"></span>B/s</small>
                         </div>
                     </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-3 col-xs-6">
+            <div class="ibox float-e-margins">
+                <div class="ibox-title">
+                    <span class="label label-success pull-right" style="padding-top: 5px;">实时</span>
+                    <h5>矿机状态</h5>
+                </div>
+                <div class="ibox-content" style="height: 87px">
+                            <div class="row">
+                                <div class="col-lg-12 text-right" style="padding-left: 5px;">
+                                    <table align="right">
+                                    <tr align="center">
+                                      <td style="color:#c2c2c2;font-weight:bold;font-size: 16px" id="pause_miner">-</td>
+                                      <td style="color:#f8ac59; font-weight:bold;font-size: 16px" id="exception_miner">-</td>
+                                      <td style="color:#ed5565; font-weight:bold;font-size: 16px" id="offline_miner">-</td>
+                                      <td style="color:#23c6c8; font-weight:bold;font-size: 16px" id="total_miner">-</td>
+                                    </tr>
+                                    <tr align="center">
+                                      <td style="color:#c2c2c2; font-weight:bold;font-size: 11px;padding: 3px">暂停</td>
+                                      <td style="color:#f8ac59; font-weight:bold;font-size: 11px;padding: 3px">异常</td>
+                                      <td style="color:#ed5565; font-weight:bold;font-size: 11px;padding: 3px">断网</td>
+                                      <td style="color:#23c6c8; font-weight:bold;font-size: 11px;padding: 3px">在线</td>
+                                    </tr>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+            </div>
+        </div>
+
+        <div class="col-lg-3 col-xs-6">
+            <div class="ibox float-e-margins">
+                <div class="ibox-title">
+                    <span class="label label-success pull-right" style="padding-top: 5px;">实时</span>
+                    <h5>UPNP状态</h5>
+                </div>
+                <div class="ibox-content" style="height: 88px;">
+                    <div class="row">
+                        <div class="col-lg-12 text-right" style="padding-left: 5px;">
+                            <table align="right">
+                                    <tr align="center">
+                                      <td style="color:#c2c2c2;font-weight:bold;font-size: 16px" id="pause_pnp">-</td>
+                                      <td style="color:#f8ac59; font-weight:bold;font-size: 16px" id="exception_pnp">-</td>
+                                      <td style="color:#ed5565; font-weight:bold;font-size: 16px" id="offline_pnp">-</td>
+                                      <td style="color:#23c6c8; font-weight:bold;font-size: 16px" id="total_pnp">-</td>
+                                    </tr>
+                                    <tr align="center">
+                                      <td style="color:#c2c2c2; font-weight:bold;font-size: 11px;padding: 3px">禁用</td>
+                                      <td style="color:#f8ac59; font-weight:bold;font-size: 11px;padding: 3px">连接</td>
+                                      <td style="color:#ed5565; font-weight:bold;font-size: 11px;padding: 3px">失败</td>
+                                      <td style="color:#23c6c8; font-weight:bold;font-size: 11px;padding: 3px">成功</td>
+                                    </tr>
+                             </table>
+                          </div>
+                      </div>
                 </div>
             </div>
         </div>
@@ -105,6 +162,37 @@
                 </div>
             </div>
         </div >
+        <div class="col-lg-3 col-xs-6">
+            <div class="ibox float-e-margins">
+                <div class="ibox-title">
+                    <span class="label label-warning pull-right" style="padding-top: 5px;">余额</span>
+                    <h5>账户资金</h5>
+                </div>
+                <div class="ibox-content" style="height: 88px;">
+                    <div class="row">
+                        <div class="col-xs-12 text-right" style="padding-left: 5px;" id="expected_font">
+                            <h1 style="font-weight: bold;" class="no-margins" id="balance"></h1>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-lg-3 col-xs-6">
+            <div class="ibox float-e-margins">
+                <div class="ibox-title">
+                    <span class="label label-primary pull-right" style="padding-top: 5px;">收入</span>
+                    <h5>账户资金</h5>
+                </div>
+                <div class="ibox-content" style="height: 88px;">
+                    <div class="row">
+                        <div class="col-xs-12 text-right" style="padding-left: 5px;" id="expected_font">
+                            <h1 style="font-weight: bold;" class="no-margins" id="income"></h1>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
 
         <div class="col-lg-3 col-md-4 col-xs-6">
             <div class="ibox float-e-margins">
@@ -688,6 +776,30 @@
                         $('#w_award_income_unit').html('个')
                     }
                     flash_element($('#w_award_income'));
+                }
+                if($('#balance').html() !== convert_to_yuan(data.today_data.balance)) {
+                    $('#balance').html(convert_to_yuan(data.today_data.balance));
+                    flash_element($('#balance'));
+                }
+                if($('#income').html() !== convert_to_yuan(data.today_data.income)) {
+                    $('#income').html(convert_to_yuan(data.today_data.income));
+                    flash_element($('#income'));
+                }
+                if(parseInt($('#pause_miner').html()) !== data.device_summary.pause_count) {
+                    $('#pause_miner').html(data.device_summary.pause_count);
+                    $('#pause_pnp').html(data.device_summary.pause_count);
+                }
+                if(parseInt($('#exception_miner').html()) !== data.device_summary.exception_count) {
+                    $('#exception_miner').html(data.device_summary.exception_count);
+                    $('#exception_pnp').html(data.device_summary.exception_count);
+                }
+                if(parseInt($('#offline_miner').html()) !== data.device_summary.offline_count) {
+                    $('#offline_miner').html(data.device_summary.offline_count);
+                    $('#offline_pnp').html(data.device_summary.offline_count);
+                }
+                if(parseInt($('#total_miner').html()) !== data.device_summary.total_count) {
+                    $('#total_miner').html(data.device_summary.online_count);
+                    $('#total_pnp').html(data.device_summary.total_count);
                 }
 
             })

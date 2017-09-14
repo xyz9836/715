@@ -6,6 +6,38 @@ import json
 import socket
 import struct
 
+def miner_summary(username):
+    miner_summary_key = 'miner_summary:%s' % username;
+    b_miner_summary = r_session.get(miner_summary_key)
+    if b_miner_summary is not None:
+        return json.loads(b_miner_summary.decode('utf-8'))
+    miner_summary={
+        'offline_count':0,
+        'online_count':0,
+        'pause_count':0,
+        'exception_count':0,
+        'total_count':0
+    }
+    for user_id in r_session.smembers('accounts:%s' % username):
+        account_data_key = 'account:%s:%s:data' % (username, user_id.decode('utf-8'))
+        exist_account_data = r_session.get(account_data_key)
+        if exist_account_data is None:
+            return miner_summary
+        account_data = json.loads(exist_account_data.decode('utf-8'))
+        for dev in account_data['device_info']:
+            if dev['paused'] == True:
+                miner_summary['pause_count']=miner_summary['pause_count'] + 1
+            elif dev['status'] == 'online':
+                miner_summary['online_count']=miner_summary['online_count'] + 1
+            elif dev['status'] == 'offline':
+                miner_summary['offline_count']=miner_summary['offline_count'] + 1
+            else:
+                miner_summary['exception_count']=miner_summary['exception_count'] + 1
+            miner_summary['total_count']=miner_summary['total_count']+1
+    return miner_summary
+
+
+
 # 获取前一日收益
 
 
@@ -547,7 +579,7 @@ def add_function():
         return int(crystal_values / 100) / 100
 
     return dict(convert_to_yuan=convert_to_yuan, get_device_type=get_device_type, get_device_root=get_device_root,int2ip=int2ip, convert_to_yuanjiaofen=convert_to_yuanjiaofen)
-    
+
 
 # 显示消息框
 @app.context_processor
