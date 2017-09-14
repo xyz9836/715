@@ -122,6 +122,7 @@
                                 <th class="col-md-1">状态</th>
                                 <th class="col-md-1 hidden-xs" style="min-width: 110px;">UPNP</th>
                                 <th class="col-md-1 hidden-xs">IP</th>
+                                <th class="col-md-1 hidden-xs">ROOT密码</th>
                                 <th class="col-md-1" style="text-align: right;min-width: 100px;" >操作</th>
                             </tr>
                             </thead>
@@ -171,6 +172,7 @@
                                                 </td>
                                                 <td class="hidden-xs">{{ dev.dcdn_upnp_message | e }}</td>
                                                 <td class="hidden-xs">{{ dev.ip | e }}</td>
+                                                <td class="hidden-xs">{{ get_device_root(dev.device_sn, dev.mac_address) |e }}</td>
                                                 <td>
 
                                                 </td>
@@ -214,6 +216,7 @@
                                                     </td>
                                                     <td class="hidden-xs">{{ dev.dcdn_upnp_message | e }}</td>
                                                     <td class="hidden-xs">{{ dev.ip | e }}</td>
+                                                    <td class="hidden-xs">{{ get_device_root(dev.device_sn, dev.mac_address) |e }}</td>
                                                     <td>
                                                         {% if loop.first %}
                                                             <form style="margin-left: 3px;float:right;" role="form" action="/admin_device" method="post">
