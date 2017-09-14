@@ -360,6 +360,9 @@ def test_email():
     mail['subject'] = '云监工-测试邮件'
     mail['text'] = '这只是一个测试邮件，你更应该关注的不是这里面写了什么。不是么？'
     send_email(mail, config_info)
+
+    api_post(url='https://sc.ftqq.com/SCU10361T0a2416cf6a6ca09da852bf223a588c2f59776131cef7d.send', data='text=IFTTT报告&desp=主人，服务器重启啦，检查一下吧~~ ')  
+
     return redirect(url_for('system_config'))
 
 
