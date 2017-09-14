@@ -189,7 +189,7 @@
                     <div class="row">
                         <div class="col-xs-12 text-right" style="padding-left: 5px;">
                             <h1 style="font-weight: bold;" class="no-margins" id="income"></h1>
-                            <small style=" font-weight: bold;"><span id="shouru_unit"></span></small>
+                            <small style=" font-weight: bold;"><span id="shouru_unit2"></span></small>
                         </div>
                     </div>
                 </div>
@@ -788,7 +788,7 @@
                 }
                 if($('#income').html() !== convert_to_yuan(data.today_data.income)) {
                     $('#income').html(convert_to_yuan(data.today_data.income));
-                    $('#shouru_unit').html('元');
+                    $('#shouru_unit2').html('元');
                     flash_element($('#income'));
                 }
                 if(parseInt($('#pause_miner').html()) !== data.device_summary.pause_count) {
