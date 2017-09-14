@@ -360,7 +360,7 @@ def test_email():
     mail['subject'] = '云监工-测试邮件'
     mail['text'] = '这只是一个测试邮件，你更应该关注的不是这里面写了什么。不是么？'
     send_email(mail, config_info)
-    
+    send_restart()
     return redirect(url_for('system_config'))
 
 
