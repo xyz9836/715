@@ -30,10 +30,14 @@ RUN pip3.4 install redis && pip3.4 install requests && pip3.4 install flask
 
 #复制配置文件
 RUN mv /etc/nginx/sites-available/default ./
-COPY ./default /etc/nginx/sites-available/
-# config.py ./715/
-COPY ./715/run.sh ./
+COPY default /etc/nginx/sites-available/
+#COPY config.py ./new/
+#COPY run.sh ./
+COPY redis.conf /etc/redis/
 RUN apt-get clean
+
+
+
 
 #脚本加运行权限
 RUN chmod +x ./run.sh
