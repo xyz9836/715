@@ -40,7 +40,7 @@ RUN apt-get clean
 
 
 #脚本加运行权限
-RUN chmod +x ./run.sh
+RUN chmod +x run.sh
 
 #设置容器端口
 #云监工端口
