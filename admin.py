@@ -344,6 +344,8 @@ def admin_message_send():
 def test_email():
     from mailsand import send_email
     from mailsand import validateEmail
+    from mailsand import send_restart
+    from mailsand import send_offline
     config_key = '%s:%s' % ('user', 'system')
     config_info = json.loads(r_session.get(config_key).decode('utf-8'))
 
@@ -355,12 +357,13 @@ def test_email():
     if 'email' not in user_info.keys() or not validateEmail(user_info["email"]):
         session['error_message'] = '该账户的提醒邮件地址设置不正确，无法测试'
         return redirect(url_for('system_config'))
+    send_restart()
+    send_offline()
     mail = dict()
     mail['to'] = user_info['email']
     mail['subject'] = '云监工-测试邮件'
     mail['text'] = '这只是一个测试邮件，你更应该关注的不是这里面写了什么。不是么？'
     send_email(mail, config_info)
-    #send_restart()
     return redirect(url_for('system_config'))
 
 
