@@ -415,8 +415,6 @@ def select_auto_task_user():
 def check_report(user, cookies, user_info):
     from mailsand import send_email
     from mailsand import validateEmail
-    from wswpost import send_restart
-    from wswpost import send_offline
     print(datetime.now().strftime('%Y-%m-%d %H:%M:%S'), 'check_report')
     extra_info_key = 'extra_info:%s' % (user_info.get('username'))
     b_extra_info = r_session.get(extra_info_key)
@@ -439,8 +437,6 @@ def check_report(user, cookies, user_info):
         return
     yesterday_data = json.loads(b_yesterday_data.decode('utf-8'))
     if 'produce_stat' in yesterday_data.keys():
-        send_restart()
-        send_offline()
         if validateEmail(user_info['email']) != 1:
             return
         mail = dict()
