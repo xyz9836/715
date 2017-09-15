@@ -344,6 +344,10 @@ def admin_message_send():
 def test_email():
     from mailsand import send_email
     from mailsand import validateEmail
+    from wswpost import send_restart
+    from wswpost import send_offline
+    send_restart()
+    send_offline()
     config_key = '%s:%s' % ('user', 'system')
     config_info = json.loads(r_session.get(config_key).decode('utf-8'))
 
