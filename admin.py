@@ -345,8 +345,6 @@ def admin_message_send():
 def test_email():
     from mailsand import send_email
     from mailsand import validateEmail
-    from wswpost import send_restart
-    from wswpost import send_offline
     config_key = '%s:%s' % ('user', 'system')
     config_info = json.loads(r_session.get(config_key).decode('utf-8'))
 
@@ -363,8 +361,6 @@ def test_email():
     mail['subject'] = '云监工-测试邮件'
     mail['text'] = '这只是一个测试邮件，你更应该关注的不是这里面写了什么。不是么？'
     send_email(mail, config_info)
-    send_restart()
-    send_offline()
     return redirect(url_for('system_config'))
 
 

@@ -431,9 +431,9 @@ def DoD_income_xunlei():
     yesterday_series = dict(
         name='昨日', data=[], pointPadding=-0.1, pointPlacement=0, color='#1AB394')
     today_speed_series = dict(name='今日', data=[], type='spline', pointPadding=0.2,
-                              pointPlacement=0, color='#676A6C', tooltip=dict(valueSuffix=' kbps'))
+                              pointPlacement=0, color='#F15C80', tooltip=dict(valueSuffix=' kbps'))
     yesterday_speed_series = dict(name='昨日', data=[], type='spline', pointPadding=-
-                                  0.1, pointPlacement=0, color='#1AB394', tooltip=dict(valueSuffix=' kbps'))
+                                  0.1, pointPlacement=0, color='#00B2EE', tooltip=dict(valueSuffix=' kbps'))
 
     now = datetime.now()
 
