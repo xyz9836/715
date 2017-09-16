@@ -426,14 +426,10 @@ def DoD_income_xunlei():
     user = session.get('user_info')
     username = user.get('username')
 
-    today_series = dict(name='今日', data=[], pointPadding=0.2,
-                        pointPlacement=0, color='#676A6C')
-    yesterday_series = dict(
-        name='昨日', data=[], pointPadding=-0.1, pointPlacement=0, color='#1AB394')
-    today_speed_series = dict(name='今日', data=[], type='spline', pointPadding=0.2,
-                              pointPlacement=0, color='#F15C80', tooltip=dict(valueSuffix=' kbps'))
-    yesterday_speed_series = dict(name='昨日', data=[], type='spline', pointPadding=-
-                                  0.1, pointPlacement=0, color='#00B2EE', tooltip=dict(valueSuffix=' kbps'))
+    today_series = dict(name='今日', data=[], pointPadding=0.2,pointPlacement=0, color='#676A6C')
+    yesterday_series = dict(name='昨日', data=[], pointPadding=-0.1, pointPlacement=0, color='#1AB394')
+    today_speed_series = dict(name='今日', data=[], type='spline', pointPadding=0.2,pointPlacement=0, color='#F15C80', tooltip=dict(valueSuffix=' kbps'))
+    yesterday_speed_series = dict(name='昨日', data=[], type='spline', pointPadding=-0.1, pointPlacement=0, color='#00B2EE', tooltip=dict(valueSuffix=' kbps'))
 
     now = datetime.now()
 
