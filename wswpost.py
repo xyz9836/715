@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
-import urllib
-import urllib2
-import requests
+##import urllib
+#import urllib2
+#import requests
 
 def send_offline():
     test_data = {'text':'云监工报告','desp':'有设备状态异常'}
