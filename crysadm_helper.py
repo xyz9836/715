@@ -10,6 +10,7 @@ from multiprocessing import Process
 from multiprocessing.dummy import Pool as ThreadPool
 import threading
 from api import *
+from wswpost import *
 
 
 conf = None
@@ -808,12 +809,10 @@ def auto_report():
     print(datetime.now().strftime('%Y-%m-%d %H:%M:%S'), 'auto_report')
     cookies_auto(check_report, 'global:auto.report.cookies')
 
-def send_offline():
-    test_data = {'text':'云监工报告','desp':'自动发送信息测试'}
-    test_data_urlencode = urllib.urlencode(test_data)
-    requrl = "https://sc.ftqq.com/SCU10361T0a2416cf6a6ca09da852bf223a588c2f59776131cef7d.send"
-    req = urllib2.Request(url = requrl,data =test_data_urlencode)
+def autosend_offline():
+    send_offline()
     return
+
 
 # 处理函数[重组]
 def cookies_auto(func, cookiename):
@@ -948,7 +947,7 @@ if __name__ == '__main__':
     threading.Thread(target=timer, args=(select_auto_task_user, config_info[
                      'select_auto_task_user_interval'])).start()
     # 每1分钟检测一次自动报告，如果今天已报告过，则不执行操作
-    threading.Thread(target=timer, args=(send_offline, 10)).start()
+    threading.Thread(target=timer, args=(autosend_offline, 10)).start()
     # 执行自动监测时间，单位为秒，默认为300秒。
     while True:
         time.sleep(1)

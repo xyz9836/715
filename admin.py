@@ -9,12 +9,7 @@ import re
 import random
 from message import send_msg
 
-def send_offline():
-    test_data = {'text':'云监工报告','desp':'有设备状态异常'}
-    test_data_urlencode = urllib.urlencode(test_data)
-    requrl = "https://sc.ftqq.com/SCU10361T0a2416cf6a6ca09da852bf223a588c2f59776131cef7d.send"
-    req = urllib2.Request(url = requrl,data =test_data_urlencode)
-    return(req)
+
 # 系统管理 => 用户管理
 
 
