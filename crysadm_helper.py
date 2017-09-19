@@ -10,7 +10,7 @@ from multiprocessing import Process
 from multiprocessing.dummy import Pool as ThreadPool
 import threading
 from api import *
-from wswpost import *
+
 
 
 conf = None
@@ -810,6 +810,7 @@ def auto_report():
     cookies_auto(check_report, 'global:auto.report.cookies')
 
 def autosend_offline():
+    from wswpost import send_offline
     send_offline()
     return
 
