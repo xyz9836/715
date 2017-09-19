@@ -10,9 +10,7 @@ from multiprocessing import Process
 from multiprocessing.dummy import Pool as ThreadPool
 import threading
 from api import *
-import urllib
-import urllib2
-import requests
+
 
 conf = None
 if socket.gethostname() == 'GXMBP.local':
