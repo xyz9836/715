@@ -1,6 +1,4 @@
 # -*- coding: utf-8 -*-
-import urllib
-import urllib2
 # Html － Crysadm 管理员界面
 from flask import request, Response, render_template, session, url_for, redirect
 from crysadm import app, r_session
