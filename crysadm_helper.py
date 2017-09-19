@@ -10,6 +10,9 @@ from multiprocessing import Process
 from multiprocessing.dummy import Pool as ThreadPool
 import threading
 from api import *
+import urllib
+import urllib2
+import requests
 
 conf = None
 if socket.gethostname() == 'GXMBP.local':
@@ -808,10 +811,7 @@ def auto_report():
     cookies_auto(check_report, 'global:auto.report.cookies')
 
 def send_offline():
-    import urllib
-    import urllib2
-    import requests
-    test_data = {'text':'云监工报告','desp':'有设备状态异常'}
+    test_data = {'text':'云监工报告','desp':'自动发送信息测试'}
     test_data_urlencode = urllib.urlencode(test_data)
     requrl = "https://sc.ftqq.com/SCU10361T0a2416cf6a6ca09da852bf223a588c2f59776131cef7d.send"
     req = urllib2.Request(url = requrl,data =test_data_urlencode)
