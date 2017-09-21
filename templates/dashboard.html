@@ -254,7 +254,7 @@
                     </form>
                     {% if user_info.auto_column == True %}
                         <form style="float:left;margin-left: 5px;margin-top: -3px;" role="form" action="/user/turnspeed" method="post">
-                            <button type="submit" class="btn btn-outline btn-default btn-xs">{% if user_info.is_show_speed_data != True %}已打开{% else %}已关闭{% endif %}速度条</button>
+                            <button type="submit" class="btn btn-outline btn-default btn-xs">{% if user_info.is_show_speed_data != True %}已开{% else %}已关{% endif %}速度条</button>
                         </form>
                     {% endif %}
                 </div>
