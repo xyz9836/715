@@ -254,7 +254,7 @@
                     </form>
                     {% if user_info.auto_column == True %}
                         <form style="float:left;margin-left: 5px;margin-top: -3px;" role="form" action="/user/turnspeed" method="post">
-                            <button type="submit" class="btn btn-outline btn-default btn-xs">{% if user_info.is_show_speed_data != True %}关闭{% else %}打开{% endif %}速度条</button>
+                            <button type="submit" class="btn btn-outline btn-default btn-xs">{% if user_info.is_show_speed_data != True %}打开{% else %}关闭{% endif %}速度条</button>
                         </form>
                     {% endif %}
                 </div>
@@ -781,7 +781,11 @@
                 }
                 if($('#balance').html() !== convert_to_yuan(data.today_data.balance)) {
                     $('#balance').html(convert_to_yuan(data.today_data.balance));
-                    $('#shouru_unit').html('元');
+                    if(data.today_data.balance >= 1000){
+                        $('#shouru_unit').html('元')
+                    }else{
+                        $('#shouru_unit').html('个')
+                    }
                     flash_element($('#balance'));
 
 
