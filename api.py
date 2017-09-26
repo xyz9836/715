@@ -22,12 +22,16 @@ def api_proxies():
 # 提交迅雷链接，返回信息
 
 
-def api_post(cookies, url, data, verify=False, headers=agent_header, timeout=60):
+#def api_post(cookies, url, data, verify=False, headers=agent_header, timeout=60):
+def api_post(url, data, cookies, headers=agent_header, timeout=60):
     address = server_address + url
     try:
-        proxies = api_proxies()
-        r = requests.post(url=address, data=data, proxies=proxies,
-                          verify=verify, headers=headers, cookies=cookies, timeout=timeout)
+        #proxies = api_proxies()
+        #r = requests.post(url=address, data=data, proxies=proxies,
+        #                  verify=verify, headers=headers, cookies=cookies, timeout=timeout)
+        with requests.Session() as s:
+            s.mount('http://', HTTPAdapter(max_retries=5))
+            r = s.post(url=url, data=data, headers=headers, cookies=cookies, timeout=timeout)
     except requests.exceptions.RequestException as e:
         return __handle_exception(e=e)
 
