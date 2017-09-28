@@ -948,7 +948,7 @@ if __name__ == '__main__':
     threading.Thread(target=timer, args=(select_auto_task_user, config_info[
                      'select_auto_task_user_interval'])).start()
     # 每1分钟检测一次自动报告，如果今天已报告过，则不执行操作
-    threading.Thread(target=timer, args=(autosend_offline, 10)).start()
+    #threading.Thread(target=timer, args=(autosend_offline, 10)).start()
     # 执行自动监测时间，单位为秒，默认为300秒。
     while True:
         time.sleep(1)
